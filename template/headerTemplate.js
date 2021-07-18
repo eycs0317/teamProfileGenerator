@@ -20,3 +20,5 @@ function headTemplate () {
       <div class="row">
   `
 }
+
+module.exports = headTemplate;
