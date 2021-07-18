@@ -1,5 +1,5 @@
 header {
-  background-color: red;
+  background-color: rgb(180, 48, 48);
   text-align: center;
   width: 100%;
   height: 100px;
@@ -9,12 +9,36 @@ h1 {
   color: white;
   padding: 20px;
 }
+.row {
+  padding-top: 35px;
+}
+.top-card{
+  background-color: rgb(0, 119, 255);
+}
 
-.col {
-  width: 50px;
-  height: 100px;
+
+.name {
+  color: aliceblue;
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 15px;
+}
+
+.title {
+  color: aliceblue;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 15px;
 }
 
 .card {
-  margin: 15px;
+  margin-top: 15px;
+  height: auto;
+  max-width: 18rem;
+  border: rgb(237, 237, 241) 1px solid;
+  padding: 0;
+}
+
+a:hover {
+  color: rgb(94, 116, 116);
 }
