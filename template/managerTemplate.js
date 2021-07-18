@@ -4,7 +4,7 @@ function managerTemplate() {
 
   <div class="card" style="width: 15rem;">
     <div style='background-color: rgb(83, 83, 219);'>
-      <p class="name" >name</p>
+      <p class="name" >${name}</p>
       <p class="title">title</p>
     </div>
 

@@ -2,7 +2,10 @@ const inquirer = require('inquirer')
 const fs = require('fs')
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
 
+const endTemplate = require('./template/endTemplate')
+console.log('endTemplate', endTemplate)
 
 const employees = [];
 var initQuestions = [
@@ -43,14 +46,15 @@ function init() {
       engineerOrIntern();
     })
     .catch(error => {
-      console.log('error')
+      console.log('error', error)
     })
 }
 
 function engineerOrIntern () {
+  console.log('employees----->', employees)
   inquirer.prompt([{
     type: 'list',
-    message: 'Do u want to add a Engineer or Intern?',
+    message: 'Engineer or Intern?',
     choices: ['engineer', 'intern'],
     name: 'role'
   }])
@@ -59,7 +63,7 @@ function engineerOrIntern () {
     if(role === 'engineer') {
       engineerQuestion()
     }else {
-      //do something
+      internQuestion()
     }
   })
 }
@@ -89,8 +93,54 @@ function engineerQuestion() {
   }
 ]).then(answers => {
   var {name, id, email, github, addmore} = answers;
+  var engineer = new Engineer(name, id, email, github);
+  employees.push(engineer);
+  if(addmore === 'Yes') {
+    engineerOrIntern()
+  } else {
+    //loop the array
+  }
 
 })
+}
+
+function internQuestion() {
+  inquirer.prompt([{
+    message: 'What is your name?',
+    name: 'name'
+  },
+  {
+    message: 'what is your ID?',
+    name: 'id'
+  },
+  {
+    message: 'What is your Email?',
+    name: 'email'
+  },
+  {
+    message: 'What is your School?',
+    name: 'school'
+  },
+  {
+    message: 'Do you want to add more Engineer or Intern?',
+    name: 'addmore',
+    type: 'list',
+    choices: ['Yes', 'No']
+  }
+]).then(answers => {
+  var {name, id, email, school, addmore} = answers;
+  var intern = new Intern(name, id, email, school);
+  employees.push(intern);
+  if(addmore === 'Yes') {
+    engineerOrIntern()
+  } else {
+    //loop the array
+  }
+})
+}
+
+function renderhtml () {
+  employees
 }
 
 init()
