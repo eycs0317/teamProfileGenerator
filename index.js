@@ -24,7 +24,7 @@ var initQuestions = [
   },
   {
     message: 'Please enter office number',
-    name: 'officeName'
+    name: 'officeNUmber'
   }
 ]
 
@@ -41,8 +41,8 @@ function init() {
   inquirer.prompt(initQuestions)
     .then(answers => {
       console.log('answers', answers)
-      var {name, id, email, officeName} = answers
-      var employee = new Manager(name, id, email, officeName)
+      var {name, id, email, officeNumber} = answers
+      var employee = new Manager(name, id, email, officeNumber)
       employees.push(employee)
       engineerOrIntern();
     })
