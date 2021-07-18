@@ -13,11 +13,6 @@ describe('Engineer', () => {
     expect(typeof newEmployee).toEqual('object')
   })
 
-  it('Can create Engineer class', () => {
-    const newEmployee = new Engineer()
-    expect(typeof newEmployee).toEqual('object')
-  })
-
   it('Can create Engineer class with name', () => {
     const newEmployee = new Engineer('Eddie');
     expect(newEmployee.name).toEqual('Eddie')
