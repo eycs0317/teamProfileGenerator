@@ -39,12 +39,12 @@ describe('Manager', () => {
   })
 
   it('Can get name from getName function', () => {
-    const newEmployee = new Manager('Eddie',1, 'email@email.com');
+    const newEmployee = new Manager('Eddie');
     expect(newEmployee.getName()).toEqual('Eddie')
   })
 
   it('Can get ID from getId function', () => {
-    const newEmployee = new Manager('Eddie',1, 'email@email.com');
+    const newEmployee = new Manager('Eddie',1);
     expect(newEmployee.getId()).toEqual(1)
   })
 
