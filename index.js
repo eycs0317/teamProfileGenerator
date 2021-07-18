@@ -1,10 +1,14 @@
 const inquirer = require('inquirer')
-const fs = require('fs')
+const fs = require('fs');
+
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 const headerTemplate = require('./template/headerTemplate')
 const endTemplate = require('./template/endTemplate')
+const managerTemplate = require('./template/managerTemplate')
+const engineerTemplate = require('./template/engineerTemplate')
+const internTemplate = require('./template/internTemplate')
 
 
 
@@ -24,7 +28,7 @@ var initQuestions = [
   },
   {
     message: 'Please enter office number',
-    name: 'officeNUmber'
+    name: 'officeNumber'
   }
 ]
 
@@ -99,7 +103,7 @@ function engineerQuestion() {
   if(addmore === 'Yes') {
     engineerOrIntern()
   } else {
-    //loop the array
+    renderhtml()
   }
 
 })
@@ -135,13 +139,42 @@ function internQuestion() {
   if(addmore === 'Yes') {
     engineerOrIntern()
   } else {
-    //loop the array
+    renderhtml()
   }
 })
 }
 
-function renderhtml () {
-  employees
+function renderhtml() {
+  fs.appendFileSync('./dist/myTeam.html', headerTemplate(), (err) => {
+    if(err) console.log('error-->', err)
+  })
+
+  for(var i = 0; i <employees.length; i++) {
+    let role = employees[i].getRole()
+    if(role === 'Manager') {
+      const {name, id, email, officeNumber} = employees[i]
+      fs.appendFileSync('./dist/myTeam.html', managerTemplate(name, role, id, email, officeNumber), (err) => {
+        if(err) console.log('error-->', err)
+      })
+    }
+    if(role === 'Engineer') {
+      const {name, id, email, github} = employees[i]
+      fs.appendFileSync('./dist/myTeam.html', engineerTemplate(name, role, id, email, github), (err) => {
+        if(err) console.log('error-->', err)
+      })
+    }
+    if(role === 'Intern') {
+      const {name, id, email, school} = employees[i]
+      fs.appendFileSync('./dist/myTeam.html', internTemplate(name, role, id, email, school), (err) => {
+        if(err) console.log('error-->', err)
+      })
+    }
+
+  }
+
+  fs.appendFileSync('./dist/myTeam.html', endTemplate(), (err) => {
+    if(err) console.log('error-->', err)
+  })
 }
 
 init()
