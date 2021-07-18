@@ -3,7 +3,7 @@ const Employee = require('../lib/Employee')
 
 describe('Employee', () => {
 
-  it('Can create Employee class', () => {
+  it('Can create Employee object', () => {
     const newEmployee = new Employee()
     expect(typeof newEmployee).toEqual('object')
   })

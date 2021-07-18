@@ -1,6 +1,17 @@
 const Engineer = require('../lib/Engineer')
+const Employee = require('../lib/Employee')
 
 describe('Engineer', () => {
+
+  it('Check Engineer class to be instance of Employee Class', () => {
+    const newEmployee = new Engineer();
+    expect(newEmployee).toBeInstanceOf(Employee)
+  })
+
+  it('Can create Engineer object', () => {
+    const newEmployee = new Engineer()
+    expect(typeof newEmployee).toEqual('object')
+  })
 
   it('Can create Engineer class', () => {
     const newEmployee = new Engineer()
