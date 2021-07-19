@@ -41,4 +41,4 @@
 
   ## Video Link
 
-  [My GitHub](https://drive.google.com/file/d/1WN-_5jdGWQr1su4_xVunNTpClsG49YYi/view)
+  [Link](https://drive.google.com/file/d/1WN-_5jdGWQr1su4_xVunNTpClsG49YYi/view)
