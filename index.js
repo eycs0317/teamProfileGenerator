@@ -143,7 +143,7 @@ function internQuestion() {
 }
 
 function renderhtml() {
-  fs.appendFileSync('./dist/myTeam.html', headerTemplate(), (err) => {
+  fs.writeFileSync('./dist/myTeam.html', headerTemplate(), (err) => {
     if(err) console.log('error-->', err)
   })
 
